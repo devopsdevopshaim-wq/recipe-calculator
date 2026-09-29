@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון מצרכים למתכון</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #FF9800;
+            --light-color: #f9f9f9;
+            --dark-color: #333;
+            --border-color: #ddd;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .ingredients-list {
+            margin-bottom: 20px;
+        }
+        
+        .ingredient-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .ingredient-name {
+            flex: 2;
+        }
+        
+        .ingredient-quantity {
+            flex: 1;
+        }
+        
+        .ingredient-unit {
+            flex: 1;
+        }
+        
+        .remove-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        
+        .remove-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        .add-btn {
+            background-color: var(--secondary-color);
+            margin-top: 10px;
+        }
+        
+        .add-btn:hover {
+            background-color: #e68900;
+        }
+        
+        .results-section {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .print-btn {
+            background-color: var(--secondary-color);
+        }
+        
+        .print-btn:hover {
+            background-color: #e68900;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            .results-section, .results-section * {
+                visibility: visible;
+            }
+            
+            .results-section {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>מחשבון מצרכים למתכון</h1>
+            <p class="description">הזן את פרטי המתכון שלך וחשב את הכמויות הדרושות עבור כל מספר של מוצרים סופיים</p>
+        </header>
+        
+        <section class="input-section">
+            <div class="form-group">
+                <label for="recipeName">שם המתכון:</label>
+                <input type="text" id="recipeName" placeholder="לדוגמה: סופגניות">
+            </div>
+            
+            <div class="form-group">
+                <label for="baseQuantity">מספר המוצרים הסופיים במתכון המקורי:</label>
+                <input type="number" id="baseQuantity" min="1" value="1">
+            </div>
+            
+            <div class="form-group">
+                <label>מצרכים:</label>
+                <div class="ingredients-list" id="ingredientsList">
+                    <!-- כאן יופיעו שורות המצרכים -->
+                </div>
+                <button type="button" class="add-btn" id="addIngredientBtn">+ הוסף מצרך</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="desiredQuantity">מספר המוצרים הסופיים הרצוי:</label>
+                <input type="number" id="desiredQuantity" min="1" value="1">
+            </div>
+            
+            <button type="button" id="calculateBtn">חשב כמויות</button>
+        </section>
+        
+        <section class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h2 id="resultsTitle">תוצאות החישוב</h2>
+                <button class="print-btn" id="printBtn">הדפס תוצאות</button>
+            </div>
+            
+            <div id="resultsContent">
+                <!-- כאן יופיעו תוצאות החישוב -->
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2023 מחשבון מצרכים למתכון - כל הזכויות שמורות</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ingredientsList = document.getElementById('ingredientsList');
+            const addIngredientBtn = document.getElementById('addIngredientBtn');
+            const calculateBtn = document.getElementById('calculateBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsContent = document.getElementById('resultsContent');
+            const resultsTitle = document.getElementById('resultsTitle');
+            const printBtn = document.getElementById('printBtn');
+            
+            let ingredientCount = 0;
+            const maxIngredients = 20;
+            
+            // הוספת שורת מצרך ראשונית
+            addIngredientRow();
+            
+            // טיפול בלחיצה על כפתור הוספת מצרך
+            addIngredientBtn.addEventListener('click', function() {
+                if (ingredientCount < maxIngredients) {
+                    addIngredientRow();
+                } else {
+                    alert(`לא ניתן להוסיף יותר מ-${maxIngredients} מצרכים`);
+                }
+            });
+            
+            // טיפול בלחיצה על כפתור חישוב
+            calculateBtn.addEventListener('click', function() {
+                calculateQuantities();
+            });
+            
+            // טיפול בלחיצה על כפתור הדפסה
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            // פונקציה להוספת שורת מצרך
+            function addIngredientRow() {
+                if (ingredientCount >= maxIngredients) return;
+                
+                const row = document.createElement('div');
+                row.className = 'ingredient-row';
+                row.innerHTML = `
+                    <input type="text" class="ingredient-name" placeholder="שם המצרך">
+                    <input type="number" class="ingredient-quantity" placeholder="כמות" min="0" step="0.01">
+                    <select class="ingredient-unit">
+                        <option value="גרם">גרם</option>
+                        <option value="כוס">כוס</option>
+                        <option value="כף">כף</option>
+                        <option value="כפית">כפית</option>
+                        <option value="ק"ג">ק"ג</option>
+                        <option value="ליטר">ליטר</option>
+                        <option value="מ"ל">מ"ל</option>
+                        <option value="יחידה">יחידה</option>
+                        <option value="צרור">צרור</option>
+                        <option value="ראש">ראש</option>
+                        <option value="שיניים">שיניים</option>
+                        <option value="פרוסה">פרוסה</option>
+                    </select>
+                    <button type="button" class="remove-btn">✕</button>
+                `;
+                
+                ingredientsList.appendChild(row);
+                ingredientCount++;
+                
+                // הוספת מאזין לכפתור המחיקה
+                row.querySelector('.remove-btn').addEventListener('click', function() {
+                    ingredientsList.removeChild(row);
+                    ingredientCount--;
+                });
+            }
+            
+            // פונקציה לחישוב הכמויות
+            function calculateQuantities() {
+                const recipeName = document.getElementById('recipeName').value || 'המתכון שלי';
+                const baseQuantity = parseFloat(document.getElementById('baseQuantity').value) || 1;
+                const desiredQuantity = parseFloat(document.getElementById('desiredQuantity').value) || 1;
+                
+                // איסוף נתוני המצרכים
+                const ingredients = [];
+                const ingredientRows = ingredientsList.querySelectorAll('.ingredient-row');
+                
+                let hasErrors = false;
+                
+                ingredientRows.forEach(row => {
+                    const name = row.querySelector('.ingredient-name').value;
+                    const quantity = parseFloat(row.querySelector('.ingredient-quantity').value);
+                    const unit = row.querySelector('.ingredient-unit').value;
+                    
+                    if (name && !isNaN(quantity) && quantity > 0) {
+                        ingredients.push({
+                            name: name,
+                            quantity: quantity,
+                            unit: unit
+                        });
+                    } else if (name || quantity) {
+                        hasErrors = true;
+                    }
+                });
+                
+                if (hasErrors) {
+                    alert('יש למלא את כל שדות המצרכים בצורה תקינה');
+                    return;
+                }
+                
+                if (ingredients.length === 0) {
+                    alert('יש להוסיף לפחות מצרך אחד');
+                    return;
+                }
+                
+                // חישוב הכמויות החדשות
+                const ratio = desiredQuantity / baseQuantity;
+                
+                // בניית טבלת התוצאות
+                let resultsHTML = `
+                    <p><strong>מספר מוצרים סופיים:</strong> ${desiredQuantity}</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>מצרך</th>
+                                <th>כמות</th>
+                                <th>יחידה</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                ingredients.forEach(ingredient => {
+                    const newQuantity = ingredient.quantity * ratio;
+                    resultsHTML += `
+                        <tr>
+                            <td>${ingredient.name}</td>
+                            <td>${newQuantity.toFixed(2)}</td>
+                            <td>${ingredient.unit}</td>
+                        </tr>
+                    `;
+                });
+                
+                resultsHTML += `
+                        </tbody>
+                    </table>
+                `;
+                
+                // עדכון כותרת התוצאות
+                resultsTitle.textContent = `תוצאות חישוב עבור: ${recipeName}`;
+                
+                // הצגת התוצאות
+                resultsContent.innerHTML = resultsHTML;
+                resultsSection.style.display = 'block';
+                
+                // גלילה לתוצאות
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

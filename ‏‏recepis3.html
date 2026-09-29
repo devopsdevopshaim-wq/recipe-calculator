@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ספר המתכונים היוקרתי שלי</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --primary-dark: #654321;
+            --secondary: #D2691E;
+            --accent: #F4A460;
+            --light: #FFF8DC;
+            --dark: #3E2723;
+            --text: #5D4037;
+            --text-light: #795548;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fdfcfb 0%, #f5e8d0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="white" stroke-width="2"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="white" stroke-width="1"/><circle cx="50" cy="50" r="15" fill="none" stroke="white" stroke-width="1"/></svg>');
+            background-size: 200px;
+            opacity: 0.1;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .app-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .card-header i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-left: 15px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.2);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .ingredients-list {
+            margin-bottom: 20px;
+        }
+        
+        .ingredient-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+        
+        .ingredient-name {
+            flex: 2;
+        }
+        
+        .ingredient-quantity {
+            flex: 1;
+        }
+        
+        .ingredient-unit {
+            flex: 1;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn i {
+            margin-left: 8px;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #B35717;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-success {
+            background: #27ae60;
+        }
+        
+        .btn-success:hover {
+            background: #219653;
+        }
+        
+        .btn-info {
+            background: #3498db;
+        }
+        
+        .btn-info:hover {
+            background: #2980b9;
+        }
+        
+        .btn-warning {
+            background: #f39c12;
+        }
+        
+        .btn-warning:hover {
+            background: #e67e22;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .remove-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .remove-btn:hover {
+            background: #c0392b;
+        }
+        
+        .add-btn {
+            background: var(--accent);
+            color: var(--dark);
+            margin-top: 10px;
+        }
+        
+        .add-btn:hover {
+            background: #E9967A;
+        }
+        
+        .results-section {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: var(--light);
+            border-radius: var(--radius);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .recipe-book {
+            margin-top: 40px;
+        }
+        
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .recipe-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .recipe-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 20px;
+        }
+        
+        .recipe-body {
+            padding: 20px;
+        }
+        
+        .recipe-ingredients {
+            margin-bottom: 15px;
+        }
+        
+        .recipe-instructions {
+            margin-top: 15px;
+        }
+        
+        .recipe-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+        
+        .instructions-section {
+            margin-top: 30px;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .step-content {
+            padding: 20px;
+            flex: 1;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .media-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .media-upload {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .media-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .media-item {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .media-item img, .media-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .media-remove {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .tts-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .tts-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .tts-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        .tts-btn.stop {
+            background: #e74c3c;
+        }
+        
+        .tts-btn.stop:hover {
+            background: #c0392b;
+        }
+        
+        .tts-btn.pause {
+            background: #f39c12;
+        }
+        
+        .tts-btn.pause:hover {
+            background: #e67e22;
+        }
+        
+        .tts-progress {
+            flex: 1;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .tts-progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .tts-voice-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tts-settings {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .tts-setting {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tts-setting label {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+        
+        .share-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .share-modal-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .share-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .share-option {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .share-option:hover {
+            background: #f5f5f5;
+            transform: translateY(-3px);
+        }
+        
+        .share-option i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .human-voice-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #e8f5e8;
+            padding: 10px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #2e7d32;
+        }
+        
+        .human-voice-indicator i {
+            color: #4caf50;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: var(--text-light);
+            border-top: 1px solid #eee;
+        }
+        
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            .results-section, .results-section * {
+                visibility: visible;
+            }
+            
+            .results-section {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+                background: white;
+            }
+            
+            .btn, .media-section, .tts-controls, .action-buttons {
+                display: none !important;
+            }
+        }
+
+        .highlight {
+            background-color: #fff9c4;
+            transition: background-color 0.3s;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-book-open"></i> ספר המתכונים היוקרתי</h1>
+            <p class="tagline">צור, חשב ושמור את המתכונים שלך במקום אחד עם חווית משתמש מושלמת</p>
+        </header>
+        
+        <div class="app-container">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-calculator"></i>
+                    <h2>מחשבון מצרכים למתכון</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label for="recipeName">שם המתכון:</label>
+                    <input type="text" id="recipeName" placeholder="לדוגמה: סופגניות ביתיות">
+                </div>
+                
+                <div class="form-group">
+                    <label for="baseQuantity">מספר המוצרים הסופיים במתכון המקורי:</label>
+                    <input type="number" id="baseQuantity" min="1" value="12">
+                </div>
+                
+                <div class="form-group">
+                    <label>מצרכים:</label>
+                    <div class="ingredients-list" id="ingredientsList">
+                        <!-- שורות המצרכים יתווספו כאן -->
+                    </div>
+                    <button type="button" class="btn add-btn" id="addIngredientBtn">
+                        <i class="fas fa-plus"></i> הוסף מצרך
+                    </button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="desiredQuantity">מספר המוצרים הסופיים הרצוי:</label>
+                    <input type="number" id="desiredQuantity" min="1" value="12">
+                </div>
+                
+                <div class="form-group">
+                    <label for="recipeInstructions">הוראות הכנה:</label>
+                    <textarea id="recipeInstructions" placeholder="פרט את שלבי ההכנה..."></textarea>
+                </div>
+                
+                <div class="media-section">
+                    <h3>מדיה (תמונות/סרטונים)</h3>
+                    <div class="media-upload">
+                        <input type="file" id="mediaUpload" accept="image/*,video/*" multiple>
+                        <div class="media-preview" id="mediaPreview">
+                            <!-- תצוגה מקדימה של המדיה -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button type="button" class="btn" id="calculateBtn">
+                        <i class="fas fa-calculator"></i> חשב כמויות
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="saveRecipeBtn">
+                        <i class="fas fa-save"></i> שמור מתכון
+                    </button>
+                    <button type="button" class="btn btn-success" id="shareRecipeBtn">
+                        <i class="fas fa-share-alt"></i> שתף מתכון
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-utensils"></i>
+                    <h2>תוצאות החישוב</h2>
+                </div>
+                
+                <div class="results-section" id="resultsSection">
+                    <div class="results-header">
+                        <h3 id="resultsTitle">תוצאות החישוב</h3>
+                        <div>
+                            <button class="btn btn-outline" id="printBtn">
+                                <i class="fas fa-print"></i> הדפס
+                            </button>
+                            <button class="btn btn-info" id="readAloudBtn">
+                                <i class="fas fa-volume-up"></i> הקרא
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="resultsContent">
+                        <!-- תוכן התוצאות יופיע כאן -->
+                    </div>
+                    
+                    <div class="instructions-section" id="instructionsSection">
+                        <!-- הוראות ההכנה יופיעו כאן -->
+                    </div>
+                    
+                    <div class="tts-controls" id="ttsControls">
+                        <button class="tts-btn" id="playTtsBtn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="tts-btn pause" id="pauseTtsBtn">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button class="tts-btn stop" id="stopTtsBtn">
+                            <i class="fas fa-stop"></i>
+                        </button>
+                        <div class="tts-progress">
+                            <div class="tts-progress-bar" id="ttsProgressBar"></div>
+                        </div>
+                        <span id="ttsStatus">מוכן להקראה</span>
+                    </div>
+                    
+                    <div class="tts-settings">
+                        <div class="tts-setting">
+                            <label for="ttsRate">מהירות:</label>
+                            <input type="range" id="ttsRate" min="0.5" max="1.5" step="0.1" value="1.0">
+                            <span id="ttsRateValue">1.0</span>
+                        </div>
+                        <div class="tts-setting">
+                            <label for="ttsPitch">גובה:</label>
+                            <input type="range" id="ttsPitch" min="0.5" max="2" step="0.1" value="1.0">
+                            <span id="ttsPitchValue">1.0</span>
+                        </div>
+                        <div class="tts-setting">
+                            <label for="ttsVolume">עוצמה:</label>
+                            <input type="range" id="ttsVolume" min="0.1" max="1" step="0.1" value="0.8">
+                            <span id="ttsVolumeValue">0.8</span>
+                        </div>
+                    </div>
+                    
+                    <div class="human-voice-indicator">
+                        <i class="fas fa-check-circle"></i>
+                        <span>הקראה אנושית מתקדמת - נשמע טבעי יותר</span>
+                    </div>
+                </div>
+                
+                <div class="empty-state" id="emptyResults">
+                    <i class="fas fa-calculator"></i>
+                    <h3>אין תוצאות להצגה</h3>
+                    <p>הזן את פרטי המתכון ולחץ על "חשב כמויות" כדי לראות את התוצאות כאן</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="recipe-book card">
+            <div class="card-header">
+                <i class="fas fa-book"></i>
+                <h2>ספר המתכונים שלי</h2>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="all">כל המתכונים</div>
+                <div class="tab" data-tab="saved">מתכונים שמורים</div>
+            </div>
+            
+            <div class="tab-content active" id="tab-all">
+                <div class="recipes-grid" id="sampleRecipes">
+                    <!-- מתכונים לדוגמה -->
+                </div>
+            </div>
+            
+            <div class="tab-content" id="tab-saved">
+                <div class="recipes-grid" id="savedRecipes">
+                    <!-- מתכונים שמורים -->
+                </div>
+                <div class="empty-state" id="emptySaved">
+                    <i class="fas fa-bookmark"></i>
+                    <h3>אין מתכונים שמורים</h3>
+                    <p>שמור מתכונים שיצרת כדי לראות אותם כאן</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- מודל שיתוף -->
+        <div class="share-modal" id="shareModal">
+            <div class="share-modal-content">
+                <div class="modal-header">
+                    <h3>שתף מתכון</h3>
+                    <button class="close-modal" id="closeShareModal">&times;</button>
+                </div>
+                <p>בחר כיצד תרצה לשתף את המתכון:</p>
+                <div class="share-options">
+                    <div class="share-option" data-method="print">
+                        <i class="fas fa-print"></i>
+                        <span>הדפסה</span>
+                    </div>
+                    <div class="share-option" data-method="email">
+                        <i class="fas fa-envelope"></i>
+                        <span>אימייל</span>
+                    </div>
+                    <div class="share-option" data-method="whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>וואטסאפ</span>
+                    </div>
+                    <div class="share-option" data-method="link">
+                        <i class="fas fa-link"></i>
+                        <span>קישור</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 ספר המתכונים היוקרתי | נוצר עם <i class="fas fa-heart" style="color: #e74c3c;"></i></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // אלמנטים DOM
+            const ingredientsList = document.getElementById('ingredientsList');
+            const addIngredientBtn = document.getElementById('addIngredientBtn');
+            const calculateBtn = document.getElementById('calculateBtn');
+            const saveRecipeBtn = document.getElementById('saveRecipeBtn');
+            const shareRecipeBtn = document.getElementById('shareRecipeBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsContent = document.getElementById('resultsContent');
+            const resultsTitle = document.getElementById('resultsTitle');
+            const instructionsSection = document.getElementById('instructionsSection');
+            const printBtn = document.getElementById('printBtn');
+            const readAloudBtn = document.getElementById('readAloudBtn');
+            const playTtsBtn = document.getElementById('playTtsBtn');
+            const pauseTtsBtn = document.getElementById('pauseTtsBtn');
+            const stopTtsBtn = document.getElementById('stopTtsBtn');
+            const ttsStatus = document.getElementById('ttsStatus');
+            const ttsProgressBar = document.getElementById('ttsProgressBar');
+            const ttsRate = document.getElementById('ttsRate');
+            const ttsRateValue = document.getElementById('ttsRateValue');
+            const ttsPitch = document.getElementById('ttsPitch');
+            const ttsPitchValue = document.getElementById('ttsPitchValue');
+            const ttsVolume = document.getElementById('ttsVolume');
+            const ttsVolumeValue = document.getElementById('ttsVolumeValue');
+            const emptyResults = document.getElementById('emptyResults');
+            const sampleRecipes = document.getElementById('sampleRecipes');
+            const savedRecipes = document.getElementById('savedRecipes');
+            const emptySaved = document.getElementById('emptySaved');
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const mediaUpload = document.getElementById('mediaUpload');
+            const mediaPreview = document.getElementById('mediaPreview');
+            const shareModal = document.getElementById('shareModal');
+            const closeShareModal = document.getElementById('closeShareModal');
+            const shareOptions = document.querySelectorAll('.share-option');
+            
+            // משתנים גלובליים
+            let ingredientCount = 0;
+            const maxIngredients = 20;
+            let savedRecipesData = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+            let currentMedia = [];
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+            let isPlaying = false;
+            let currentStep = 0;
+            let recipeSteps = [];
+            let progressInterval;
+            
+            // אתחול
+            initializeSampleIngredients();
+            displaySampleRecipes();
+            displaySavedRecipes();
+            setupTtsControls();
+            
+            // מאזיני אירועים
+            addIngredientBtn.addEventListener('click', addIngredientRow);
+            calculateBtn.addEventListener('click', calculateQuantities);
+            saveRecipeBtn.addEventListener('click', saveRecipe);
+            shareRecipeBtn.addEventListener('click', showShareModal);
+            printBtn.addEventListener('click', () => window.print());
+            readAloudBtn.addEventListener('click', readRecipeAloud);
+            playTtsBtn.addEventListener('click', playTts);
+            pauseTtsBtn.addEventListener('click', pauseTts);
+            stopTtsBtn.addEventListener('click', stopTts);
+            mediaUpload.addEventListener('change', handleMediaUpload);
+            closeShareModal.addEventListener('click', () => shareModal.style.display = 'none');
+            
+            // סגירת מודל שיתוף בלחיצה מחוץ לתוכן
+            shareModal.addEventListener('click', function(e) {
+                if (e.target === shareModal) {
+                    shareModal.style.display = 'none';
+                }
+            });
+            
+            // מאזינים לשיתוף
+            shareOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const method = this.getAttribute('data-method');
+                    shareRecipe(method);
+                });
+            });
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    document.getElementById(`tab-${tabId}`).classList.add('active');
+                });
+            });
+            
+            // פונקציות
+            function initializeSampleIngredients() {
+                // ניקוי רשימת המצרכים
+                ingredientsList.innerHTML = '';
+                ingredientCount = 0;
+                
+                // הוספת 3 מצרכים לדוגמה
+                addIngredientRow('קמח', 500, 'גרם');
+                addIngredientRow('שמרים', 10, 'גרם');
+                addIngredientRow('סוכר', 50, 'גרם');
+            }
+            
+            function addIngredientRow(name = '', quantity = '', unit = 'גרם') {
+                if (ingredientCount >= maxIngredients) {
+                    alert(`לא ניתן להוסיף יותר מ-${maxIngredients} מצרכים`);
+                    return;
+                }
+                
+                const row = document.createElement('div');
+                row.className = 'ingredient-row';
+                row.innerHTML = `
+                    <input type="text" class="ingredient-name" placeholder="שם המצרך" value="${name}">
+                    <input type="number" class="ingredient-quantity" placeholder="כמות" min="0" step="0.01" value="${quantity}">
+                    <select class="ingredient-unit">
+                        <option value="גרם" ${unit === 'גרם' ? 'selected' : ''}>גרם</option>
+                        <option value="כוס" ${unit === 'כוס' ? 'selected' : ''}>כוס</option>
+                        <option value="כף" ${unit === 'כף' ? 'selected' : ''}>כף</option>
+                        <option value="כפית" ${unit === 'כפית' ? 'selected' : ''}>כפית</option>
+                        <option value="ק\"ג" ${unit === 'ק"ג' ? 'selected' : ''}>ק"ג</option>
+                        <option value="ליטר" ${unit === 'ליטר' ? 'selected' : ''}>ליטר</option>
+                        <option value="מ\"ל" ${unit === 'מ"ל' ? 'selected' : ''}>מ"ל</option>
+                        <option value="יחידה" ${unit === 'יחידה' ? 'selected' : ''}>יחידה</option>
+                        <option value="צרור" ${unit === 'צרור' ? 'selected' : ''}>צרור</option>
+                        <option value="ראש" ${unit === 'ראש' ? 'selected' : ''}>ראש</option>
+                        <option value="שיניים" ${unit === 'שיניים' ? 'selected' : ''}>שיניים</option>
+                        <option value="פרוסה" ${unit === 'פרוסה' ? 'selected' : ''}>פרוסה</option>
+                    </select>
+                    <button type="button" class="remove-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                ingredientsList.appendChild(row);
+                ingredientCount++;
+                
+                // מאזין לכפתור המחיקה
+                row.querySelector('.remove-btn').addEventListener('click', function() {
+                    ingredientsList.removeChild(row);
+                    ingredientCount--;
+                });
+            }
+            
+            function calculateQuantities() {
+                const recipeName = document.getElementById('recipeName').value || 'המתכון שלי';
+                const baseQuantity = parseFloat(document.getElementById('baseQuantity').value) || 1;
+                const desiredQuantity = parseFloat(document.getElementById('desiredQuantity').value) || 1;
+                const instructions = document.getElementById('recipeInstructions').value;
+                
+                // איסוף נתוני המצרכים
+                const ingredients = [];
+                const ingredientRows = ingredientsList.querySelectorAll('.ingredient-row');
+                
+                let hasErrors = false;
+                
+                ingredientRows.forEach(row => {
+                    const name = row.querySelector('.ingredient-name').value;
+                    const quantity = parseFloat(row.querySelector('.ingredient-quantity').value);
+                    const unit = row.querySelector('.ingredient-unit').value;
+                    
+                    if (name && !isNaN(quantity) && quantity > 0) {
+                        ingredients.push({
+                            name: name,
+                            quantity: quantity,
+                            unit: unit
+                        });
+                    } else if (name || quantity) {
+                        hasErrors = true;
+                    }
+                });
+                
+                if (hasErrors) {
+                    alert('יש למלא את כל שדות המצרכים בצורה תקינה');
+                    return;
+                }
+                
+                if (ingredients.length === 0) {
+                    alert('יש להוסיף לפחות מצרך אחד');
+                    return;
+                }
+                
+                // חישוב הכמויות החדשות
+                const ratio = desiredQuantity / baseQuantity;
+                
+                // בניית טבלת התוצאות
+                let resultsHTML = `
+                    <p><strong>מספר מוצרים סופיים:</strong> ${desiredQuantity}</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>מצרך</th>
+                                <th>כמות</th>
+                                <th>יחידה</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                ingredients.forEach(ingredient => {
+                    const newQuantity = ingredient.quantity * ratio;
+                    resultsHTML += `
+                        <tr>
+                            <td>${ingredient.name}</td>
+                            <td>${newQuantity.toFixed(2)}</td>
+                            <td>${ingredient.unit}</td>
+                        </tr>
+                    `;
+                });
+                
+                resultsHTML += `
+                        </tbody>
+                    </table>
+                `;
+                
+                // בניית הוראות הכנה
+                let instructionsHTML = '';
+                if (instructions) {
+                    instructionsHTML = `
+                        <h3>הוראות הכנה:</h3>
+                        <div class="instructions-steps" id="instructionsSteps">
+                    `;
+                    
+                    const steps = instructions.split('\n').filter(step => step.trim() !== '');
+                    steps.forEach((step, index) => {
+                        instructionsHTML += `
+                            <div class="step" id="step-${index}">
+                                <div class="step-number">${index + 1}</div>
+                                <div class="step-content">${step}</div>
+                            </div>
+                        `;
+                    });
+                    
+                    instructionsHTML += `</div>`;
+                }
+                
+                // עדכון כותרת התוצאות
+                resultsTitle.textContent = `תוצאות חישוב עבור: ${recipeName}`;
+                
+                // הצגת התוצאות
+                resultsContent.innerHTML = resultsHTML;
+                instructionsSection.innerHTML = instructionsHTML;
+                resultsSection.style.display = 'block';
+                emptyResults.style.display = 'none';
+                
+                // גלילה לתוצאות
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            function saveRecipe() {
+                const recipeName = document.getElementById('recipeName').value;
+                const baseQuantity = parseFloat(document.getElementById('baseQuantity').value) || 1;
+                const instructions = document.getElementById('recipeInstructions').value;
+                
+                if (!recipeName) {
+                    alert('יש להזין שם למתכון');
+                    return;
+                }
+                
+                // איסוף נתוני המצרכים
+                const ingredients = [];
+                const ingredientRows = ingredientsList.querySelectorAll('.ingredient-row');
+                
+                ingredientRows.forEach(row => {
+                    const name = row.querySelector('.ingredient-name').value;
+                    const quantity = parseFloat(row.querySelector('.ingredient-quantity').value);
+                    const unit = row.querySelector('.ingredient-unit').value;
+                    
+                    if (name && !isNaN(quantity) && quantity > 0) {
+                        ingredients.push({
+                            name: name,
+                            quantity: quantity,
+                            unit: unit
+                        });
+                    }
+                });
+                
+                if (ingredients.length === 0) {
+                    alert('יש להוסיף לפחות מצרך אחד');
+                    return;
+                }
+                
+                // יצירת אובייקט המתכון
+                const recipe = {
+                    id: Date.now(),
+                    name: recipeName,
+                    baseQuantity: baseQuantity,
+                    ingredients: ingredients,
+                    instructions: instructions,
+                    media: currentMedia,
+                    date: new Date().toLocaleDateString('he-IL')
+                };
+                
+                // שמירה ב-localStorage
+                savedRecipesData.push(recipe);
+                localStorage.setItem('savedRecipes', JSON.stringify(savedRecipesData));
+                
+                // עדכון התצוגה
+                displaySavedRecipes();
+                
+                alert(`המתכון "${recipeName}" נשמר בהצלחה!`);
+            }
+            
+            function displaySampleRecipes() {
+                const sampleRecipesData = [
+                    {
+                        id: 1,
+                        name: "סופגניות ביתיות",
+                        baseQuantity: 12,
+                        ingredients: [
+                            { name: "קמח", quantity: 500, unit: "גרם" },
+                            { name: "שמרים", quantity: 10, unit: "גרם" },
+                            { name: "סוכר", quantity: 50, unit: "גרם" },
+                            { name: "ביצים", quantity: 2, unit: "יחידה" },
+                            { name: "חמאה", quantity: 50, unit: "גרם" }
+                        ],
+                        instructions: "1. ללוש את כל החומרים לבצק אחיד\n2. לתת לתפוח לשעה\n3. לעצב לסופגניות\n4. לטגן בשמן עמוק"
+                    },
+                    {
+                        id: 2,
+                        name: "עוגת שוקולד",
+                        baseQuantity: 1,
+                        ingredients: [
+                            { name: "קמח", quantity: 200, unit: "גרם" },
+                            { name: "סוכר", quantity: 150, unit: "גרם" },
+                            { name: "קקאו", quantity: 50, unit: "גרם" },
+                            { name: "ביצים", quantity: 3, unit: "יחידה" },
+                            { name: "שמן", quantity: 100, unit: "מ\"ל" }
+                        ],
+                        instructions: "1. לערבב את כל החומרים\n2. לאפות בחום 180 מעלות\n3. לצנן לפני הגשה"
+                    }
+                ];
+                
+                sampleRecipes.innerHTML = '';
+                sampleRecipesData.forEach(recipe => {
+                    sampleRecipes.appendChild(createRecipeCard(recipe, false));
+                });
+            }
+            
+            function displaySavedRecipes() {
+                savedRecipes.innerHTML = '';
+                
+                if (savedRecipesData.length === 0) {
+                    emptySaved.style.display = 'block';
+                    return;
+                }
+                
+                emptySaved.style.display = 'none';
+                savedRecipesData.forEach(recipe => {
+                    savedRecipes.appendChild(createRecipeCard(recipe, true));
+                });
+            }
+            
+            function createRecipeCard(recipe, isSaved) {
+                const card = document.createElement('div');
+                card.className = 'recipe-card';
+                
+                let ingredientsHTML = '';
+                recipe.ingredients.forEach(ing => {
+                    ingredientsHTML += `<p>${ing.name}: ${ing.quantity} ${ing.unit}</p>`;
+                });
+                
+                let instructionsHTML = '';
+                if (recipe.instructions) {
+                    const steps = recipe.instructions.split('\n');
+                    instructionsHTML = `<p>${steps[0]}</p>`;
+                }
+                
+                let mediaHTML = '';
+                if (recipe.media && recipe.media.length > 0) {
+                    mediaHTML = `<p><i class="fas fa-images"></i> ${recipe.media.length} מדיה</p>`;
+                }
+                
+                card.innerHTML = `
+                    <div class="recipe-header">
+                        <h3>${recipe.name}</h3>
+                        <p>${recipe.baseQuantity} מנות | ${recipe.date}</p>
+                    </div>
+                    <div class="recipe-body">
+                        <div class="recipe-ingredients">
+                            <h4>מצרכים:</h4>
+                            ${ingredientsHTML}
+                        </div>
+                        <div class="recipe-instructions">
+                            <h4>הוראות:</h4>
+                            ${instructionsHTML}
+                            ${mediaHTML}
+                        </div>
+                        <div class="recipe-actions">
+                            <button class="btn btn-outline load-recipe-btn" data-id="${recipe.id}">
+                                <i class="fas fa-upload"></i> טען מתכון
+                            </button>
+                            ${isSaved ? `
+                            <button class="btn remove-recipe-btn" data-id="${recipe.id}">
+                                <i class="fas fa-trash"></i> מחק
+                            </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                // מאזין לכפתור טעינת מתכון
+                card.querySelector('.load-recipe-btn').addEventListener('click', function() {
+                    loadRecipe(recipe);
+                });
+                
+                // מאזין לכפתור מחיקת מתכון (אם קיים)
+                const removeBtn = card.querySelector('.remove-recipe-btn');
+                if (removeBtn) {
+                    removeBtn.addEventListener('click', function() {
+                        deleteRecipe(recipe.id);
+                    });
+                }
+                
+                return card;
+            }
+            
+            function loadRecipe(recipe) {
+                document.getElementById('recipeName').value = recipe.name;
+                document.getElementById('baseQuantity').value = recipe.baseQuantity;
+                document.getElementById('recipeInstructions').value = recipe.instructions || '';
+                
+                // ניקוי והכנסת המצרכים
+                ingredientsList.innerHTML = '';
+                ingredientCount = 0;
+                
+                recipe.ingredients.forEach(ing => {
+                    addIngredientRow(ing.name, ing.quantity, ing.unit);
+                });
+                
+                // טעינת מדיה
+                currentMedia = recipe.media || [];
+                updateMediaPreview();
+                
+                // גלילה לחלק העליון
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                alert(`המתכון "${recipe.name}" נטען בהצלחה!`);
+            }
+            
+            function deleteRecipe(recipeId) {
+                if (confirm('האם אתה בטוח שברצונך למחוק מתכון זה?')) {
+                    savedRecipesData = savedRecipesData.filter(recipe => recipe.id !== recipeId);
+                    localStorage.setItem('savedRecipes', JSON.stringify(savedRecipesData));
+                    displaySavedRecipes();
+                }
+            }
+            
+            function handleMediaUpload(e) {
+                const files = e.target.files;
+                
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        currentMedia.push({
+                            type: file.type.startsWith('image/') ? 'image' : 'video',
+                            src: e.target.result,
+                            name: file.name
+                        });
+                        updateMediaPreview();
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+                
+                // איפוס הקלט
+                e.target.value = '';
+            }
+            
+            function updateMediaPreview() {
+                mediaPreview.innerHTML = '';
+                
+                currentMedia.forEach((media, index) => {
+                    const mediaItem = document.createElement('div');
+                    mediaItem.className = 'media-item';
+                    
+                    if (media.type === 'image') {
+                        mediaItem.innerHTML = `
+                            <img src="${media.src}" alt="${media.name}">
+                            <button class="media-remove" data-index="${index}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+                    } else {
+                        mediaItem.innerHTML = `
+                            <video controls>
+                                <source src="${media.src}" type="video/mp4">
+                                הדפדפן שלך אינו תומך בתצוגת וידאו.
+                            </video>
+                            <button class="media-remove" data-index="${index}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+                    }
+                    
+                    mediaPreview.appendChild(mediaItem);
+                    
+                    // מאזין לכפתור הסרה
+                    mediaItem.querySelector('.media-remove').addEventListener('click', function() {
+                        const removeIndex = parseInt(this.getAttribute('data-index'));
+                        currentMedia.splice(removeIndex, 1);
+                        updateMediaPreview();
+                    });
+                });
+            }
+            
+            function showShareModal() {
+                shareModal.style.display = 'flex';
+            }
+            
+            function shareRecipe(method) {
+                const recipeName = document.getElementById('recipeName').value || 'מתכון ללא שם';
+                const baseQuantity = parseFloat(document.getElementById('baseQuantity').value) || 1;
+                const desiredQuantity = parseFloat(document.getElementById('desiredQuantity').value) || 1;
+                const instructions = document.getElementById('recipeInstructions').value;
+                
+                // איסוף נתוני המצרכים
+                const ingredients = [];
+                const ingredientRows = ingredientsList.querySelectorAll('.ingredient-row');
+                
+                ingredientRows.forEach(row => {
+                    const name = row.querySelector('.ingredient-name').value;
+                    const quantity = parseFloat(row.querySelector('.ingredient-quantity').value);
+                    const unit = row.querySelector('.ingredient-unit').value;
+                    
+                    if (name && !isNaN(quantity) && quantity > 0) {
+                        const ratio = desiredQuantity / baseQuantity;
+                        const newQuantity = quantity * ratio;
+                        ingredients.push(`${name}: ${newQuantity.toFixed(2)} ${unit}`);
+                    }
+                });
+                
+                // יצירת תוכן המתכון לשיתוף
+                let recipeContent = `*${recipeName}*\n\n`;
+                recipeContent += `*מצרכים (ל-${desiredQuantity} מנות):*\n`;
+                ingredients.forEach(ing => {
+                    recipeContent += `• ${ing}\n`;
+                });
+                
+                if (instructions) {
+                    recipeContent += `\n*הוראות הכנה:*\n${instructions}`;
+                }
+                
+                // ביצוע השיתוף לפי השיטה הנבחרת
+                switch(method) {
+                    case 'print':
+                        window.print();
+                        break;
+                    case 'email':
+                        const emailSubject = encodeURIComponent(recipeName);
+                        const emailBody = encodeURIComponent(recipeContent);
+                        window.open(`mailto:?subject=${emailSubject}&body=${emailBody}`);
+                        break;
+                    case 'whatsapp':
+                        const whatsappText = encodeURIComponent(recipeContent);
+                        window.open(`https://wa.me/?text=${whatsappText}`);
+                        break;
+                    case 'link':
+                        // יצירת קישור וירטואלי (בפועל זה ישמור את המתכון ויצור קישור)
+                        const recipeData = {
+                            name: recipeName,
+                            ingredients: ingredients,
+                            instructions: instructions
+                        };
+                        const recipeJson = encodeURIComponent(JSON.stringify(recipeData));
+                        // במקום אמיתי, זה היה שולח לשרת ומקבל קישור
+                        alert('בגרסה מלאה, זה היה יוצר קישור לשיתוף. הקוד למתכון:\n' + recipeJson);
+                        break;
+                }
+                
+                shareModal.style.display = 'none';
+            }
+            
+            function setupTtsControls() {
+                // עדכון ערכי הסליידרים
+                ttsRate.addEventListener('input', function() {
+                    ttsRateValue.textContent = this.value;
+                });
+                
+                ttsPitch.addEventListener('input', function() {
+                    ttsPitchValue.textContent = this.value;
+                });
+                
+                ttsVolume.addEventListener('input', function() {
+                    ttsVolumeValue.textContent = this.value;
+                });
+            }
+            
+            function readRecipeAloud() {
+                const recipeName = document.getElementById('recipeName').value || 'מתכון ללא שם';
+                const desiredQuantity = parseFloat(document.getElementById('desiredQuantity').value) || 1;
+                const instructions = document.getElementById('recipeInstructions').value;
+                
+                // עצירת הקראה קיימת
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                }
+                
+                // יצירת שלבי ההקראה
+                recipeSteps = [];
+                
+                // שלב 1: הקדמה
+                recipeSteps.push(`היי! אני אקריא לך עכשיו את המתכון: ${recipeName}.`);
+                
+                // שלב 2: מצרכים
+                let ingredientsText = `להכנת ${desiredQuantity} מנות, תצטרך את המצרכים הבאים: `;
+                const ingredientRows = ingredientsList.querySelectorAll('.ingredient-row');
+                
+                ingredientRows.forEach(row => {
+                    const name = row.querySelector('.ingredient-name').value;
+                    const quantity = parseFloat(row.querySelector('.ingredient-quantity').value);
+                    const unit = row.querySelector('.ingredient-unit').value;
+                    
+                    if (name && !isNaN(quantity) && quantity > 0) {
+                        const ratio = desiredQuantity / parseFloat(document.getElementById('baseQuantity').value) || 1;
+                        const newQuantity = quantity * ratio;
+                        ingredientsText += `${newQuantity.toFixed(2)} ${unit} ${name}, `;
+                    }
+                });
+                
+                recipeSteps.push(ingredientsText.slice(0, -2) + '.');
+                
+                // שלב 3: הוראות הכנה
+                if (instructions) {
+                    recipeSteps.push('ועכשיו, הוראות ההכנה:');
+                    
+                    const steps = instructions.split('\n').filter(step => step.trim() !== '');
+                    steps.forEach(step => {
+                        // הסרת מספרים מהתחלה אם קיימים
+                        const cleanStep = step.replace(/^\d+\.\s*/, '');
+                        recipeSteps.push(cleanStep);
+                    });
+                }
+                
+                // התחלת ההקראה
+                currentStep = 0;
+                playNextStep();
+            }
+            
+            function playNextStep() {
+                if (currentStep >= recipeSteps.length) {
+                    ttsStatus.textContent = 'ההקראה הסתיימה';
+                    isPlaying = false;
+                    resetProgress();
+                    removeHighlights();
+                    return;
+                }
+                
+                const text = recipeSteps[currentStep];
+                
+                // הדגשת הטקסט הנוכחי
+                highlightCurrentStep(currentStep);
+                
+                // יצירת utterance חדש
+                currentUtterance = new SpeechSynthesisUtterance(text);
+                currentUtterance.lang = 'he-IL';
+                currentUtterance.rate = parseFloat(ttsRate.value);
+                currentUtterance.pitch = parseFloat(ttsPitch.value);
+                currentUtterance.volume = parseFloat(ttsVolume.value);
+                
+                // מאזינים לאירועים
+                currentUtterance.onstart = function() {
+                    ttsStatus.textContent = `מקריא שלב ${currentStep + 1} מתוך ${recipeSteps.length}`;
+                    isPlaying = true;
+                    startProgress();
+                };
+                
+                currentUtterance.onend = function() {
+                    currentStep++;
+                    setTimeout(playNextStep, 800); // הפסקה קצרה בין משפטים
+                };
+                
+                currentUtterance.onerror = function() {
+                    ttsStatus.textContent = 'שגיאה בהקראה';
+                    isPlaying = false;
+                    resetProgress();
+                    removeHighlights();
+                };
+                
+                // התחלת ההקראה
+                speechSynthesis.speak(currentUtterance);
+            }
+            
+            function highlightCurrentStep(stepIndex) {
+                // הסרת הדגשות קודמות
+                removeHighlights();
+                
+                // הדגשת השלב הנוכחי בהוראות אם קיים
+                const instructionsSteps = document.getElementById('instructionsSteps');
+                if (instructionsSteps && stepIndex >= 2) { // שלבי ההוראות מתחילים מאינדקס 2
+                    const instructionIndex = stepIndex - 2;
+                    const stepElement = document.getElementById(`step-${instructionIndex}`);
+                    if (stepElement) {
+                        stepElement.classList.add('highlight');
+                        stepElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+            
+            function removeHighlights() {
+                const highlightedElements = document.querySelectorAll('.highlight');
+                highlightedElements.forEach(el => {
+                    el.classList.remove('highlight');
+                });
+            }
+            
+            function startProgress() {
+                resetProgress();
+                let progress = 0;
+                progressInterval = setInterval(() => {
+                    progress += 1;
+                    ttsProgressBar.style.width = `${progress}%`;
+                    if (progress >= 100) {
+                        clearInterval(progressInterval);
+                    }
+                }, 100);
+            }
+            
+            function resetProgress() {
+                clearInterval(progressInterval);
+                ttsProgressBar.style.width = '0%';
+            }
+            
+            function playTts() {
+                if (speechSynthesis.speaking && speechSynthesis.paused) {
+                    speechSynthesis.resume();
+                    ttsStatus.textContent = 'ממשיך הקראה';
+                    startProgress();
+                } else if (!isPlaying) {
+                    readRecipeAloud();
+                }
+            }
+            
+            function pauseTts() {
+                if (speechSynthesis.speaking && !speechSynthesis.paused) {
+                    speechSynthesis.pause();
+                    ttsStatus.textContent = 'מושהה';
+                    clearInterval(progressInterval);
+                }
+            }
+            
+            function stopTts() {
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                    ttsStatus.textContent = 'הקראה הופסקה';
+                    isPlaying = false;
+                    resetProgress();
+                    removeHighlights();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
